@@ -131,10 +131,18 @@ module.exports = {
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: [/\.bmp$/, /\.svg$/,/\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
+          },
+          {
+            test: /\.svg$/,
+            loader: require.resolve('file-loader'),
+            options: {
+              limit: 100000,
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
@@ -187,6 +195,29 @@ module.exports = {
                 },
               },
             ],
+          },
+          {
+            test: /\.less$/,
+            use: [{
+              loader: 'style-loader',
+            }, {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                camelCase: true,
+                importLoaders: 1,
+                localIdentName: '[local]--[hash:base64:5]',
+              },
+            }, {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: path.resolve(__dirname, './postcss.config.js'),
+                },
+              },
+            }, {
+              loader: 'less-loader',
+            }],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

@@ -20,6 +20,8 @@ const users = require('./routes/users')
 const growLog = require('./routes/grow-log')
 const articlList = require('./routes/article-list')
 
+const Flow = require('./routes/flow')
+
 // error handler
 onerror(app)
 
@@ -74,6 +76,7 @@ app.use(users.routes(), users.allowedMethods())
 app.use(growLog.routes(),growLog.allowedMethods())
 app.use(articlList.routes(),articlList.allowedMethods())
 app.use(Message.routes(),Message.allowedMethods())
+app.use(Flow.routes(),Flow.allowedMethods())
 
 
 

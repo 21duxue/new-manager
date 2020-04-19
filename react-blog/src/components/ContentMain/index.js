@@ -35,6 +35,8 @@ const Message = LoadableComponent(()=>import('../../routes/Message/index'))
 //关于
 const About = LoadableComponent(()=>import('../../routes/About/index'))
 
+//链路图模块
+const Chain = LoadableComponent(()=>import('../../routes/Chain/index'))
 @withRouter
 class ContentMain extends React.Component {
   render () {
@@ -63,6 +65,7 @@ class ContentMain extends React.Component {
           <PrivateRoute exact path='/grow' component={GrowLog}/>
           <PrivateRoute exact path='/article' component={Article}/>
           <PrivateRoute exact path='/message' component={Message}/>
+          <PrivateRoute exact path='/chain' component={Chain}/>
           <Redirect exact from='/' to='/home'/>
         </Switch>
       </div>

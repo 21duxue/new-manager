@@ -23,6 +23,11 @@ const menus = [
     key: '/message',
   },
   {
+    title: '学习模块',
+    icon: 'laptop',
+    key: '/chain',
+  },
+  {
     title: '基本组件',
     icon: 'laptop',
     key: '/home/general',
