@@ -4,7 +4,7 @@ const db = require('../config/db');
 const Sequelize = db.sequelize;
 const Op = db.Sequelize.Op
 // 引入上一步的文章数据表模型文件
-const GrowLog = Sequelize.import('../schema/flow.js');
+const GrowLog = Sequelize.import('../schema/edge.js');
 // 自动创建表
 GrowLog.sync({force: false});
 
@@ -23,14 +23,15 @@ class GrowLogModel {
      * @param data
      * @returns {Promise<*>}
      */
-    static async createGrowLog(data) {
+    static async createGrowLog(id,query) {
+        console.log(query)
         return await GrowLog.create({
-            title: data.title, // 文章标题
-            img: data.img, // 文章作者
-            content: data.content, // 文章内容,
-            remark:data.remark,
-            sort_id:data.sort_id,
-            click_num:0,
+            source:query.source,
+            target:query.target,
+            targetAnchor:query.targetAnchor,
+            sourceAnchor:query.sourceAnchor,
+            flow_id:id,
+            id:query.id
         })
     }
 
@@ -42,7 +43,7 @@ class GrowLogModel {
     static async getGrowLogDetail(title) {
         return await GrowLog.findAll({
             where: {
-                name:{
+                title:{
                     [Op.like]:'%'+title+"%"
                 }
             },
@@ -92,11 +93,8 @@ class GrowLogModel {
      * @returns {Promise<Model>}
      */
     static async updateGrowLog(id,query) {
-        console.log(query.linkData.length)
-        console.log(typeof(query.linkData))
-        console.log(query.linkData)
         return await GrowLog.update({
-            linkData:query.linkData
+            disable:query.disable
         },{
             where: {      
                 id    

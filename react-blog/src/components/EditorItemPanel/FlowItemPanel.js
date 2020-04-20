@@ -4,6 +4,7 @@ import { ItemPanel, Item } from 'gg-editor';
 import styles from './index.less';
 
 const FlowItemPanel = () => {
+
   return (
     <ItemPanel className={styles.itemPanel}>
       <Card bordered={false}>

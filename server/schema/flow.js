@@ -1,5 +1,6 @@
 const moment = require('moment');
 module.exports = function (sequelize, DataTypes) {
+
     return sequelize.define('flow', {
         // 访客ID
         id: {
@@ -13,6 +14,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             field: 'name',
+        },
+        // 文章标题
+        linkData: {
+            type: DataTypes.TEXT,
+            allowNull: false,
         },
         // 创建时间
         createdAt: {

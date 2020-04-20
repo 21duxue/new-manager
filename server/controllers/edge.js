@@ -1,4 +1,4 @@
-const ArticleListModel = require('../modules/flow')
+const ArticleListModel = require('../modules/edge')
 const fs = require('fs')
 
 function delDir(path){
@@ -186,6 +186,8 @@ class growLogController {
         
         let id = ctx.params.id;
         let req = ctx.request.body;
+        console.log(req)
+        console.log(id)
         if (id) {
             try {
                 // 查询文章详情模型

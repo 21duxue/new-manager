@@ -68,6 +68,11 @@ class Article extends Component {
         })
       }
 
+      goEdit = (id)=>() =>{
+        console.log(this.props.history)
+        this.props.history.push('/chain-flow/'+id)
+      }
+
     render() {
         const { selectedRowKeys , data } = this.state;
         const rowSelection = {
@@ -97,7 +102,7 @@ class Article extends Component {
                 render: (re) => (
                   <span>
                     <a style={{ marginRight: 16 }} onClick={this.handleDelete(re)}>删除</a>
-                    <a className="ant-dropdown-link" >
+                    <a className="ant-dropdown-link" onClick={this.goEdit(re.id)} >
                       编辑
                     </a>
                   </span>
