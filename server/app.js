@@ -22,8 +22,6 @@ const articlList = require('./routes/article-list')
 
 const Flow = require('./routes/flow')
 
-const Node = require('./routes/node')
-const Edge = require('./routes/edge')
 
 // error handler
 onerror(app)
@@ -80,8 +78,6 @@ app.use(growLog.routes(),growLog.allowedMethods())
 app.use(articlList.routes(),articlList.allowedMethods())
 app.use(Message.routes(),Message.allowedMethods())
 app.use(Flow.routes(),Flow.allowedMethods())
-app.use(Node.routes(),Node.allowedMethods())
-app.use(Edge.routes(),Edge.allowedMethods())
 
 
 

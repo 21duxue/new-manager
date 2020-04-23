@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, message } from 'antd';
 import GGEditor, { Flow } from 'gg-editor';
 import EditorMinimap from '../../../components/EditorMinimap';
 import { FlowContextMenu } from '../../../components/EditorContextMenu';
@@ -51,17 +51,34 @@ class FlowDemo extends Component {
         let location = this.props.history.location
         let id = location.pathname.split("w/")[1]
         let {linkData}=this.state
-        console.log(id)
+        this.getDetail(id)
+    }
+
+    getDetail = (id) =>{
+        getLogDetail(id).then(res=>{
+            let data = res.data
+            if(data.code == 200){
+                let {linkData}=data.data[0]
+                this.setState({
+                    linkData:JSON.parse(linkData)
+                })
+            }
+        })
     }
 
     UpdateChain = (id,linkData) =>{
         UpdateLog(id,linkData).then(res=>{
             let data = res.data
-            console.log(data)
+            if(data.code == 200){
+                message.success(data.msg)
+            }
         })
     }
 
     onAfterChange=(data)=>{
+        let {action} = data
+        if (action == "changeData")
+        return 
         let {item}=data
         let {itemMap}=item
         let {_nodes, _edges}=itemMap
@@ -76,15 +93,11 @@ class FlowDemo extends Component {
                 nodes,
                 edges
             }
-            console.log(linkData)
-            console.log(typeof(JSON.stringify(linkData)))
-            this.setState({linkData})
             this.UpdateChain(this.props.history.location.pathname.split("w/")[1],{linkData:JSON.stringify(linkData)})
         }
     }
     render() {
         let {linkData}=this.state
-        console.log(linkData)
         return (
             <div>
                 <GGEditor className={styles.editor} className='editor'>
@@ -99,7 +112,7 @@ class FlowDemo extends Component {
                         </Col>
                         <Col span={16} className={styles.editorContent}>
                         <Flow className={styles.flow}
-                        data= {data} 
+                        data= {this.state.linkData} 
                         onAfterChange={this.onAfterChange}
                         />
                         </Col>
