@@ -88,13 +88,15 @@ class GrowLog extends Component {
       handleCancel = e => {
         this.setState({
           visible: false,
+          imgUrl:'',
+          articleUrl:'', 
+          title:''
         });
       };
 
       handleAll = () =>{
         let {isEdit,Gid}=this.state
         if(isEdit){
-        console.log('fdafda')
 
           this.handleUpdate(Gid)()
         }else{

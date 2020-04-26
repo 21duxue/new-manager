@@ -65,9 +65,17 @@ class GrowLogModel {
      * @param id  文章ID
      * @returns {Promise<Model>}
      */
-    static async getGrowLogList() {
-        return await GrowLog.findAll({
-        })
+    static async getGrowLogList(type) {
+        if(type){
+            return await GrowLog.findAll({
+                where:{
+                    time:type
+                }
+            })
+        }else{
+            return await GrowLog.findAll({
+            })
+        }
     }
 
     

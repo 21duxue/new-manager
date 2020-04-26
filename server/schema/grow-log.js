@@ -28,9 +28,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         // 创建时间
         time: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             get() {
-                return moment(this.getDataValue('time')).format('YYYY-MM-DD');
+                return moment(this.getDataValue('time')).format('YYYY');
             }
         }
     }, {

@@ -126,15 +126,29 @@ class growLogController {
      * @returns {Promise.<void>}
      */
     static async list(ctx) {
+        let time = ctx.query.time
             try {
-                // 查询文章详情模型
-                let data = await GrowLogModel.getGrowLogList();
-                ctx.response.status = 200;
-                ctx.body = {
-                    code: 200,
-                    msg: '查询成功',
-                    data
+                if(time){
+                    let data = await GrowLogModel.getGrowLogList(time);
+                    // 查询文章详情模型
+                    ctx.response.status = 200;
+                    ctx.body = {
+                        code: 200,
+                        msg: '查询成功',
+                        data
+                    }
+
+                }else{
+                    let data = await GrowLogModel.getGrowLogList();
+                    // 查询文章详情模型
+                    ctx.response.status = 200;
+                    ctx.body = {
+                        code: 200,
+                        msg: '查询成功',
+                        data
+                    }
                 }
+                
 
             } catch (err) {
                 ctx.response.status = 400;
