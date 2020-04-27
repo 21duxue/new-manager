@@ -88,6 +88,11 @@ class Article extends Component {
       handleCancel = e => {
         this.setState({
           visible: false,
+          imgUrl:'',
+          articleUrl:'',
+          sort_id:'',
+          title:'',
+          remark:''
         });
       };
 
