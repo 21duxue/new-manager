@@ -25,12 +25,8 @@ class GrowLogModel {
      */
     static async createGrowLog(data) {
         return await GrowLog.create({
-            title: data.title, // 文章标题
-            img: data.img, // 文章作者
-            content: data.content, // 文章内容,
-            remark:data.remark,
-            sort_id:data.sort_id,
-            click_num:0,
+            name: data.name, // 文章标题
+            linkData: data.linkData, // 文章作者
         })
     }
 

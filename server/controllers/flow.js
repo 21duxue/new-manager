@@ -25,9 +25,7 @@ class growLogController {
         // 接收客服端
         let req = ctx.request.body;
         console.log(req)
-        if (req.title // 文章标题
-            && req.img // 文章作者
-            && req.content // 文章内容
+        if (req.name // 文章标题
         ) {
             try {
                 // 创建文章模型

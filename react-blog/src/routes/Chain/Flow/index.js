@@ -57,7 +57,7 @@ class FlowDemo extends Component {
     getDetail = (id) =>{
         getLogDetail(id).then(res=>{
             let data = res.data
-            if(data.code == 200){
+            if(data.code == 200&&data.data.length>0){
                 let {linkData}=data.data[0]
                 this.setState({
                     linkData:JSON.parse(linkData)
