@@ -14,6 +14,7 @@ router.post('/article-create', ArticleListController.create);
 router.post('/upload', ArticleListController.uploadimg);
 // 获取文章详情接口（路由）
 router.get('/article', ArticleListController.detail);
+router.get('/articlebyId', ArticleListController.detailbyId);
 // 获取列表接口（路由）
 router.get('/article-list', ArticleListController.list);
 

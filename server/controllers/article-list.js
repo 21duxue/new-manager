@@ -119,15 +119,50 @@ class growLogController {
         }
     }
 
+
+    static async detailbyId(ctx) {
+        let id = ctx.query.id;
+        console.log(ctx.query.id)
+        if (id) {
+            try {
+                // 查询文章详情模型
+                let data = await ArticleListModel.getGrowLogDetailById(id);
+                ctx.response.status = 200;
+                ctx.body = {
+                    code: 200,
+                    msg: '查询成功',
+                    data
+                }
+
+            } catch (err) {
+                console.log(err)
+                ctx.response.status = 400;
+                ctx.body = {
+                    code: 400,
+                    msg: '查询失败',
+                }
+            }
+        } else {
+            let data = await ArticleListModel.getGrowLogList();
+            ctx.response.status = 200;
+            ctx.body = {
+                code: 200,
+                msg: '文章ID必须传',
+                data
+            }
+        }
+    }
+
     /**
      * 获取日记列表
      * @param ctx
      * @returns {Promise.<void>}
      */
     static async list(ctx) {
+        let type = ctx.query.type
             try {
                 // 查询文章详情模型
-                let data = await ArticleListModel.getGrowLogList();
+                let data = await ArticleListModel.getGrowLogList(type);
                 ctx.response.status = 200;
                 ctx.body = {
                     code: 200,

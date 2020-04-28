@@ -67,9 +67,18 @@ class GrowLogModel {
      * @param id  文章ID
      * @returns {Promise<Model>}
      */
-    static async getGrowLogList() {
-        return await GrowLog.findAll({
-        })
+    static async getGrowLogList(type) {
+        if(type){
+            return await GrowLog.findAll({
+                where:{
+                    sort_id:type
+                }
+            })
+        }else{
+            return await GrowLog.findAll({
+            })
+        }
+        
     }
 
     
@@ -93,12 +102,7 @@ class GrowLogModel {
      */
     static async updateGrowLog(id,query) {
         return await GrowLog.update({
-            title: query.title,  
-            img: query.img,    
-            content: query.content,
-            remark:query.remark,
-            sort_id:query.sort_id,
-            click_num:query.click_num > 0? query.click_num : 0
+            ...query
         },{
             where: {      
                 id    

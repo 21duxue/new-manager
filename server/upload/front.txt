@@ -1,0 +1,19 @@
+├── mock                            # 本地模拟数据
+├── public
+├── src
+ |   ├── assets                      # 本地静态资源
+│   ├── common                 # 应用公用配置，如导航信息
+│   ├── components            # 项目通用通用组件
+│   ├── routes                      # 业务页面入口和常用模板
+│   ├── utils                         # 工具库
+│   ├── index.html                  # HTML 入口模板
+│   ├── index.js                    # 应用入口
+│   ├── index.less                  # 全局样式
+│   └── router.js                   # 路由入口
+├── tests                              # 测试工具
+├── .babelrc
+├── .eslintrc.js
+├── .gitignore
+├── package-lock.json
+├── package.json
+└── webpack.config.js

@@ -1,0 +1,10 @@
+Flutter 中有多种类型的动画，先从一个简单的例子开始，使用一个 AnimatedContainer 控件，然后设置动画时长 duration，最后调用 setState 方法改变需要变化的属性值，一个动画就创建了。
+Flutter 动画是建立在以下的概念之上。
+Animation
+Flutter 中的动画系统基于 Animation 对象， 它是一个抽象类，保存了当前动画的值和状态（开始、暂停、前进、倒退），但不记录屏幕上显示的内容。UI 元素通过读取 Animation 对象的值和监听状态变化运行 build 函数，然后渲染到屏幕上形成动画效果。
+一个 Animation 对象在一段时间内会持续生成介于两个值之间的值，比较常见的类型是 Animation<double>，除 double 类型之外还有 Animation<Color> 或者 Animation<Size> 等。
+隐式动画使用 Flutter 框架内置的动画部件创建，通过设置动画的起始值和最终值来触发。当使用 setState 方法改变部件的动画属性值时，框架会自动计算出一个从旧值过渡到新值的动画。
+比如 AnimatedOpacity 部件，改变它的 opacity 值就可以触发动画。
+显式动画指的是需要手动设置动画的时间，运动曲线，取值范围的动画。将值传递给动画部件如: RotationTransition，最后使用一个AnimationController 控制动画的开始和结束。
+Hero 动画指的是在页面切换时一个元素从旧页面运动到新页面的动画。Hero 动画需要使用两个 Hero 控件实现：一个用来在旧页面中，另一个在新页面。两个 Hero 控件需要使用相同的 tag 属性，并且不能与其他tag重复。
+交织动画是由一系列的小动画组成的动画。每个小动画可以是连续或间断的，也可以相互重叠。其关键点在于使用 Interval 部件给每个小动画设置一个时间间隔，以及为每个动画的设置一个取值范围 Tween，最后使用一个 AnimationController 控制总体的动画状态。
