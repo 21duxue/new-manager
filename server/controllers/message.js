@@ -25,29 +25,30 @@ class growLogController {
         // 接收客服端
         let req = ctx.request.body;
         console.log(req)
-        if (req.title // 文章标题
-            && req.img // 文章作者
+        if (req.name // 文章标题
             && req.content // 文章内容
         ) {
             try {
                 // 创建文章模型
                 const ret = await ArticleListModel.createGrowLog(req);
+                console.log(ret)
                 // 把刚刚新建的文章ID查询文章详情，且返回新创建的文章信息
                 const data = await ArticleListModel.getGrowLogDetailById(ret.id);
 
                 ctx.response.status = 200;
                 ctx.body = {
                     code: 200,
-                    msg: '创建文章成功',
+                    msg: '创建留言成功',
                     data
                 }
 
             } catch (err) {
+                console.log(err)
                 ctx.response.status = 412;
                 ctx.body = {
                     code: 200,
                     error_code:-1,
-                    msg: '创建文章失败',
+                    msg: '创建留言失败',
                     data: err
                 }
             }
