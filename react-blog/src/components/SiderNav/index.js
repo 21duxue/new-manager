@@ -9,12 +9,12 @@ const menus = [
   },
   {
     title: '文章模块',
-    icon: 'laptop',
+    icon: 'book',
     key: '/article',
   },
   {
     title: '成长模块',
-    icon: 'laptop',
+    icon: 'eye',
     key: '/grow',
   },
   {
@@ -24,35 +24,35 @@ const menus = [
   },
   {
     title: '学习模块',
-    icon: 'laptop',
+    icon: 'edit',
     key: '/chain',
   },
-  {
-    title: '基本组件',
-    icon: 'laptop',
-    key: '/home/general',
-    subs: [
-      {key: '/home/general/button', title: '按钮', icon: '',},
-      {key: '/home/general/icon', title: '图标', icon: '',},
-    ]
-  },
-  {
-    title: '输入组件',
-    icon: 'edit',
-    key: '/home/entry',
-    subs: [
-      {
-        key: '/home/entry/form',
-        title: '表单',
-        icon: '',
-        subs: [
-          {key: '/home/entry/form/basic-form', title: '基础表单', icon: ''},
-          {key: '/home/entry/form/step-form', title: '分步表单', icon: ''}
-        ]
-      },
-      {key: '/home/entry/upload', title: '上传', icon: ''},
-    ]
-  },
+  // {
+  //   title: '基本组件',
+  //   icon: 'laptop',
+  //   key: '/home/general',
+  //   subs: [
+  //     {key: '/home/general/button', title: '按钮', icon: '',},
+  //     {key: '/home/general/icon', title: '图标', icon: '',},
+  //   ]
+  // },
+  // {
+  //   title: '输入组件',
+  //   icon: 'edit',
+  //   key: '/home/entry',
+  //   subs: [
+  //     {
+  //       key: '/home/entry/form',
+  //       title: '表单',
+  //       icon: '',
+  //       subs: [
+  //         {key: '/home/entry/form/basic-form', title: '基础表单', icon: ''},
+  //         {key: '/home/entry/form/step-form', title: '分步表单', icon: ''}
+  //       ]
+  //     },
+  //     {key: '/home/entry/upload', title: '上传', icon: ''},
+  //   ]
+  // },
   {
     title: '其它',
     icon: 'bulb',
@@ -80,7 +80,8 @@ class SiderNav extends React.Component {
 
     return (
       <div style={{height: '100vh',overflowY:'scroll'}}>
-        <div style={styles.logo}></div>
+        <div style={styles.logo}>
+        </div>
         <CustomMenu menus={menus}/>
       </div>
     )
@@ -90,8 +91,9 @@ class SiderNav extends React.Component {
 const styles = {
   logo: {
     height: '32px',
-    background: 'rgba(255, 255, 255, .2)',
-    margin: '16px'
+    margin: '16px',
+    backgroundImage:"url('http://localhost:3001/upload/logo/logo3.png')",
+    backgroundSize: "160px 32px"
   }
 }
 

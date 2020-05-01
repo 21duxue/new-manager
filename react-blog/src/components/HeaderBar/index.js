@@ -10,7 +10,7 @@ import { isAuthenticated } from '../../utils/Session'
 class HeaderBar extends React.Component {
   state = {
     icon: 'arrows-alt',
-    count: 100,
+    count: 0,
     visible: false,
     avatar: require('./img/04.jpg')
   }
@@ -53,13 +53,13 @@ class HeaderBar extends React.Component {
       <Menu className='menu'>
         <Menu.ItemGroup title='用户中心' className='menu-group'>
           <Menu.Item>你好 - {isAuthenticated()}</Menu.Item>
-          <Menu.Item>个人信息</Menu.Item>
+          {/* <Menu.Item>个人信息</Menu.Item> */}
           <Menu.Item><span onClick={this.logout}>退出登录</span></Menu.Item>
         </Menu.ItemGroup>
-        <Menu.ItemGroup title='设置中心' className='menu-group'>
+        {/* <Menu.ItemGroup title='设置中心' className='menu-group'>
           <Menu.Item>个人设置</Menu.Item>
           <Menu.Item>系统设置</Menu.Item>
-        </Menu.ItemGroup>
+        </Menu.ItemGroup> */}
       </Menu>
     )
     const login = (

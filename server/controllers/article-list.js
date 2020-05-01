@@ -167,6 +167,7 @@ class growLogController {
                 ctx.body = {
                     code: 200,
                     msg: '查询成功',
+                    count:data.length,
                     data
                 }
 

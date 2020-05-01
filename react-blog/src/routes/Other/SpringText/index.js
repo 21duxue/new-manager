@@ -278,7 +278,7 @@ const styles = {
     top: 0,
     left: 0,
     width: '100%',
-    height: 'calc(100vh - 64px)',
+    height: '400px',
   },
 }
 export default SpringText
