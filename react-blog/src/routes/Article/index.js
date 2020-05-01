@@ -213,6 +213,8 @@ class Article extends Component {
             {
               title: '标题',
               dataIndex: 'title',
+              width:'150px'
+
             },
             {
               title: '分类ID',
@@ -221,6 +223,8 @@ class Article extends Component {
             {
               title: '摘要',
               dataIndex: 'remark',
+              width:'150px'
+
             },
             {
               title: '点击查看量',
@@ -229,10 +233,13 @@ class Article extends Component {
             {
               title: '内容',
               dataIndex: 'content',
+              width:'200px'
             },
             {
               title: '图片',
               dataIndex: 'img',
+              width:'200px'
+
             },
             {
             title: '创建时间',
@@ -242,6 +249,8 @@ class Article extends Component {
                 title: '操作',
                 key: 'action',
                 sorter: true,
+              width:'120px',
+
                 filters: [],
                 onFilter: () => {},
                 render: (re) => (
