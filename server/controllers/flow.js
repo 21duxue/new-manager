@@ -32,7 +32,6 @@ class growLogController {
                 const ret = await ArticleListModel.createGrowLog(req);
                 // 把刚刚新建的文章ID查询文章详情，且返回新创建的文章信息
                 const data = await ArticleListModel.getGrowLogDetailById(ret.id);
-
                 ctx.response.status = 200;
                 ctx.body = {
                     code: 200,
@@ -89,7 +88,8 @@ class growLogController {
         if (id) {
             try {
                 // 查询文章详情模型
-                let data = await ArticleListModel.getGrowLogDetail(id);
+                let data = await ArticleListModel.getGrowLogDetailById(id);
+                console.log(data)
                 ctx.response.status = 200;
                 ctx.body = {
                     code: 200,
